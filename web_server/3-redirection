@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-#install ngix and have a file that returns the string "Hello World inside
+#Configure your Nginx server so that /redirect_me is redirecting to another page
 
-sudo apt-get update -y
-sudo apt-get install -y nginx
+sudo apt-get update
+sudo apt-get install nginx -y
 sudo ufw allow 'Nginx HTTP'
 config=\
 "server {
@@ -15,7 +15,7 @@ config=\
 		try_files \$uri \$uri/ =404;
         }
 	location /redirect_me {
-		return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+		return 301 /watch?v=QH2-TGUlwu4;
 	}
 }
 "
